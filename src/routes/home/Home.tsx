@@ -4,8 +4,11 @@ import { RootRoute } from "../_root"
 import { Box, Button, Checkbox, FormControlLabel, FormGroup, Paper, TextField, Typography } from "@mui/material"
 
 import QuickImage from '../../assets/quicklogo.png';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
+  const { loginWithRedirect } = useAuth0();
+  
   return (
     <Paper elevation={3} sx={{ p:5 }}>
       <Box
@@ -59,7 +62,11 @@ const Home = () => {
             <FormControlLabel control={<Checkbox />} label="Recordar usuario" />
           </FormGroup>
 
-          <Button fullWidth variant="contained">Ingresar</Button>
+          <Button 
+            fullWidth 
+            variant="contained"
+            onClick={() => loginWithRedirect()}
+          >Ingresar</Button>
         </Box>
       </Box>
     </Paper>

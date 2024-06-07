@@ -19,6 +19,7 @@ import { Route as LocationsHooksUseLocationsHookImport } from './routes/location
 import { Route as LocationsHooksUseLocationFetchersImport } from './routes/locations/hooks/useLocationFetchers'
 import { Route as LocationsComponentsTablePokeImport } from './routes/locations/components/TablePoke'
 import { Route as LocationsComponentsMapComponenImport } from './routes/locations/components/MapComponen'
+import { Route as HomeStoreUseAuthImport } from './routes/home/store/useAuth'
 
 // Create/Update Routes
 
@@ -66,6 +67,11 @@ const LocationsComponentsMapComponenRoute =
     getParentRoute: () => rootRoute,
   } as any)
 
+const HomeStoreUseAuthRoute = HomeStoreUseAuthImport.update({
+  path: '/home/store/useAuth',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -89,6 +95,13 @@ declare module '@tanstack/react-router' {
       path: '/locations/Locations'
       fullPath: '/locations/Locations'
       preLoaderRoute: typeof LocationsLocationsImport
+      parentRoute: typeof rootRoute
+    }
+    '/home/store/useAuth': {
+      id: '/home/store/useAuth'
+      path: '/home/store/useAuth'
+      fullPath: '/home/store/useAuth'
+      preLoaderRoute: typeof HomeStoreUseAuthImport
       parentRoute: typeof rootRoute
     }
     '/locations/components/MapComponen': {
@@ -134,6 +147,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   HomeHomeRoute,
   LocationsLocationsRoute,
+  HomeStoreUseAuthRoute,
   LocationsComponentsMapComponenRoute,
   LocationsComponentsTablePokeRoute,
   LocationsHooksUseLocationFetchersRoute,
@@ -151,6 +165,7 @@ export const routeTree = rootRoute.addChildren({
         "/_root",
         "/home/Home",
         "/locations/Locations",
+        "/home/store/useAuth",
         "/locations/components/MapComponen",
         "/locations/components/TablePoke",
         "/locations/hooks/useLocationFetchers",
@@ -166,6 +181,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/locations/Locations": {
       "filePath": "locations/Locations.tsx"
+    },
+    "/home/store/useAuth": {
+      "filePath": "home/store/useAuth.ts"
     },
     "/locations/components/MapComponen": {
       "filePath": "locations/components/MapComponen.tsx"
