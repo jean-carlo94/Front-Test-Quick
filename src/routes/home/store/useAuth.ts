@@ -43,10 +43,6 @@ export const useAuth= create<State & Actions>()(
             login: async(access: { email:string, password:string }) => {
                 const { email, password } = access;
                 let result = true;
-            
-                if(user?.error){
-                    result = false;
-                }
 
                 return result;
             },
@@ -56,7 +52,7 @@ export const useAuth= create<State & Actions>()(
             },
         }),
         {
-            name: 'INFO-MMT',
+            name: 'USER-QUICK',
             storage: createJSONStorage(() => sessionStorage),
         }
     )
